@@ -1,7 +1,23 @@
+# Project Management App
+
+This project was bootstrapped with [Create React App]
+
+A MERN stack application for managing tasks, users, and workflows.
+
+## Features
+- User authentication
+- Task creation and assignment
+- Dashboard view
+- Responsive UI
+
+## Tech Stack
+- MongoDB
+- Express.js
+- React
+- Node.js
+
+  
 # Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
 ## Available Scripts
 
 In the project directory, you can run:
