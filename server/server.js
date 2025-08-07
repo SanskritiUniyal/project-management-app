@@ -1,3 +1,4 @@
+// server/server.js
 import express from 'express';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
@@ -12,6 +13,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// Prefix all auth routes with /api/auth
 app.use('/api/auth', authRoutes);
 
 const PORT = process.env.PORT || 5000;
