@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: project-management-client
+    env: node
+    rootDir: client
+    buildCommand: npm install && npm run build
+    startCommand: npm run start
+    envVars:
+      - key: REACT_APP_API_URL
+        value: https://project-management-app-y6qt.onrender.com
+
+
+  - type: web
+    name: project-management-server
+    env: node
+    rootDir: server
+    buildCommand: npm install
+    startCommand: node index.js
+    envVars:
+      - key: MONGO_URI
+        value: mongodb+srv://Sanskriti588:***REMOVED***@sanscluster.2ygf0fm.mongodb.net/?retryWrites=true&w=majority&appName=SansCluster    
+      - key: JWT_SECRET
+        value: your-secret-key
