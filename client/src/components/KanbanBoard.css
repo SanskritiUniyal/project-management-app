@@ -1,22 +1,52 @@
 /* src/components/KanbanBoard.css */
+
 .kanban-container {
   display: flex;
+  justify-content: space-between;
   gap: 1rem;
-  padding: 1rem;
+  padding: 2rem;
+  background-color: #fdfaf6; /* soft beige */
+  background-image: url('../../assets/illustrations/kanban.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  min-height: 80vh;
+  box-sizing: border-box;
 }
 
 .kanban-column {
   flex: 1;
-  background: #f4f4f4;
+  background-color: rgba(255, 255, 255, 0.85);
+  border-radius: 12px;
   padding: 1rem;
-  border-radius: 8px;
-  min-height: 300px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  max-height: 100%;
+  overflow-y: auto;
+}
+
+.kanban-column h3 {
+  text-align: center;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: #5d4037; /* dark brown */
+  font-weight: 600;
+  letter-spacing: 0.5px;
 }
 
 .kanban-task {
-  background: white;
+  background-color: #ffffff;
+  border: 1px solid #e0d7cd;
+  border-radius: 8px;
   padding: 0.75rem;
-  margin-bottom: 0.5rem;
-  border-radius: 4px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  margin-bottom: 0.75rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease;
+  cursor: grab;
+}
+
+.kanban-task:hover {
+  transform: scale(1.02);
+  background-color: #f9f6f2;
 }
