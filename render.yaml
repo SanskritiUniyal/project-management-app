@@ -21,4 +21,4 @@ services:
       - key: MONGO_URI
         value: mongodb+srv://Sanskriti588:***REMOVED***@sanscluster.2ygf0fm.mongodb.net/?retryWrites=true&w=majority&appName=SansCluster
       - key: JWT_SECRET
-        value: My_Sssuper_Secret_Key_PROM
+        value: My_Sssuper_Secret_Key_PROMTAP
