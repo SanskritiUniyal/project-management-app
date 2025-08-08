@@ -1,6 +1,6 @@
 // src/App.jsx
 import React, { useEffect, useState } from 'react';
-import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Navbar from './components/Navbar';
 import Login from './pages/Login';
@@ -9,7 +9,7 @@ import Dashboard from './pages/Dashboard';
 import ProtectedRoute from './components/ProtectedRoute';
 import WelcomeModal from './components/WelcomeModal';
 
-function App() {
+function AppWrapper() {
   const { token } = useSelector(state => state.auth);
   const location = useLocation();
   const [showModal, setShowModal] = useState(false);
@@ -42,4 +42,10 @@ function App() {
   );
 }
 
-export default App;
+export default function App() {
+  return (
+    <Router>
+      <AppWrapper />
+    </Router>
+  );
+}
