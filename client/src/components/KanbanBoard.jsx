@@ -1,6 +1,7 @@
 // src/components/KanbanBoard.jsx
 import React, { useState } from 'react';
 import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd';
+import kanbanImage from '../assets/illustrations/kanban.png'; // ✅ Correct import
 import './KanbanBoard.css';
 
 const initialTasks = {
@@ -30,7 +31,15 @@ const KanbanBoard = () => {
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
-      <div className="kanban-container">
+      <div
+        className="kanban-container"
+        style={{
+          backgroundImage: `url(${kanbanImage})`,
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: 'center',
+          backgroundSize: 'contain',
+        }}
+      >
         {['todo', 'inProgress', 'done'].map((column) => (
           <Droppable droppableId={column} key={column}>
             {(provided) => (
