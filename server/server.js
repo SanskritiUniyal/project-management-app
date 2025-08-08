@@ -10,7 +10,10 @@ dotenv.config();
 connectDB();
 
 const app = express();
-app.use(cors({ origin: 'https://promtap.onrender.com' }));
+app.use(cors({
+  origin: 'https://promtap.onrender.com',
+  credentials: true
+}));
 app.use(express.json());
 
 // Prefix all auth routes with /api/auth
