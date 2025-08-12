@@ -1,5 +1,5 @@
 // src/pages/Dashboard.jsx
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { logout } from '../features/auth/authSlice';
@@ -13,6 +13,9 @@ const Dashboard = () => {
   const { items: projects, loading } = useSelector(state => state.projects);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const [title, setTitle] = useState('');
+  const [status, setStatus] = useState('todo');
 
   useEffect(() => {
     if (token) {
@@ -28,13 +31,17 @@ const Dashboard = () => {
 
   const handleAddProject = (e) => {
     e.preventDefault();
-    const title = e.target.title.value.trim();
-    if (title) {
-      dispatch(createProject({ title }));
-      e.target.reset();
-    } else {
+    if (!title.trim()) {
       toast.warn("Project title cannot be empty.");
+      return;
     }
+    dispatch(createProject({ title, status }));
+    setTitle('');
+    setStatus('todo');
+  };
+
+  const handleDeleteProject = (id) => {
+    dispatch(removeProject(id));
   };
 
   return (
@@ -45,8 +52,19 @@ const Dashboard = () => {
       <section>
         <h3>Your Projects</h3>
 
-        <form onSubmit={handleAddProject}>
-          <input name="title" placeholder="New project title" />
+        <form onSubmit={handleAddProject} style={{ marginBottom: '1rem' }}>
+          <input
+            name="title"
+            placeholder="New project title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            required
+          />
+          <select value={status} onChange={(e) => setStatus(e.target.value)}>
+            <option value="todo">To Do</option>
+            <option value="inProgress">In Progress</option>
+            <option value="done">Done</option>
+          </select>
           <button type="submit">Add Project</button>
         </form>
 
@@ -56,8 +74,8 @@ const Dashboard = () => {
           <ul>
             {projects.map(project => (
               <li key={project._id}>
-                {project.title} ({project.status})
-                <button onClick={() => dispatch(removeProject(project._id))}>Delete</button>
+                <strong>{project.title}</strong> — {project.status}
+                <button onClick={() => handleDeleteProject(project._id)}>Delete</button>
               </li>
             ))}
           </ul>
