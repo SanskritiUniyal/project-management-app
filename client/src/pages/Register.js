@@ -31,6 +31,7 @@ const Register = () => {
 
     try {
       const res = await registerUser(formData);
+      console.log("Register response:", res); // Added this
       if (res.token) {
         dispatch(loginSuccess({ user: res.user, token: res.token }));
         toast.success("Registration successful!");
@@ -38,6 +39,7 @@ const Register = () => {
         toast.error("Registration failed. Try again.");
       }
     } catch (err) {
+      console.error("Register error:", err); // Added this
       toast.error("Something went wrong.");
     }
   };
