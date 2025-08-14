@@ -19,6 +19,6 @@ services:
       - key: PORT
         value: 5000
       - key: MONGO_URI
-        value: mongodb+srv://Sanskriti588:***REMOVED***@sanscluster.2ygf0fm.mongodb.net/?retryWrites=true&w=majority&appName=SansCluster
+        value: mongodb+srv://Sanskriti588:SansDB_1@sanscluster.2ygf0fm.mongodb.net/?retryWrites=true&w=majority&appName=SansCluster
       - key: JWT_SECRET
         value: My_Sssuper_Secret_Key_PROMTAP
